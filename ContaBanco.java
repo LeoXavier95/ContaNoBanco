@@ -8,7 +8,8 @@ public class ContaBanco {
     private boolean status;
 
     public void estadoAtual(){
-        JOptionPane.showInputDialog(null,"Digite se é fisica ou corrente");
+        tipoDaConta();
+        JOptionPane.showMessageDialog(null,"Seu saldo bancario é de: R$" + this.saldo + " reais");
     }
 
     public ContaBanco(){
@@ -56,13 +57,16 @@ public class ContaBanco {
         this.status = status;
     }
 
-    public void abrirConta(char tipo){
+    public void abrirConta( char tipo){
+        
         this.setTipo(tipo);
         this.setStatus(true);
+        
         if (tipo == 'c' || tipo == 'C') {
             this.setSaldo(50.00f);
+            JOptionPane.showMessageDialog(null,"Conta corrente aberta com sucesso");
         } else if(tipo == 'p' || tipo == 'P') {
-            this.setSaldo(150.00f);;
+            this.setSaldo(150.00f);
         }
     }
 
@@ -108,5 +112,12 @@ public class ContaBanco {
             JOptionPane.showMessageDialog(null, "Saldo Insuficiente");
         }
     }
-
+     
+     public void tipoDaConta(){
+        if (tipo == 'c' || tipo == 'C') {
+            JOptionPane.showMessageDialog(null,"Conta corrente");
+        } else if(tipo == 'p' || tipo == 'P') {
+            JOptionPane.showMessageDialog(null,"Conta poupança");
+        }
+     }
 }
